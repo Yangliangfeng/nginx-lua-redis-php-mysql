@@ -1,6 +1,7 @@
 local  uri_args=ngx.req.get_uri_args() --????
 local  id=uri_args["id"]
-local  server={"47.98.147.49:8002","47.98.147.49:8003"}
+ngx.say(id);
+local  server={"172.31.138.61:8002","172.31.138.61:8003"}
 local  hash=ngx.crc32_long(id)
 local  index=(hash % table.getn(server))+1
 url="http://"..server[index]

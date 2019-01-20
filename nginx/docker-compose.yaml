@@ -5,7 +5,7 @@ services:
         container_name: nginx
         working_dir: /nginx-test
         ports:
-          - "8001:80"
+          - "80:80"
         stdin_open: true
         networks:
           nginx-master:
@@ -14,6 +14,7 @@ services:
         privileged: true
         volumes:
             - /Docker/nginx/nginx-load:/nginx-test
+            - /Docker/nginx/lua-project/nginx-load:/nginx-test/lua-project
             - /Docker/nginx/lua:/lua-packge
         entrypoint:
           - /bin/bash
@@ -33,6 +34,7 @@ services:
         volumes:
           - /Docker/nginx/nginx-lua1:/nginx-test
           - /Docker/nginx/lua:/lua-packge
+          - /Docker/nginx/lua-project/nginx-lua:/nginx-test/lua-project
         entrypoint:
           - /bin/bash
           - nginx.sh
@@ -52,6 +54,7 @@ services:
           volumes:
               - /Docker/nginx/nginx-lua2:/nginx-test
               - /Docker/nginx/lua:/lua-packge
+              - /Docker/nginx/lua-project/nginx-lua:/nginx-test/lua-project
           entrypoint:
             - /bin/bash
             - nginx.sh
